@@ -1,11 +1,13 @@
 <?php
 
-
 class transporte{
-    protected tipo;
+
+    protected $tipo;
+    protected $monto;
 
     public function get_tipo{
         return $this->tipo;
     }
 }
+
 ?>
