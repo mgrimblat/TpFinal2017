@@ -7,11 +7,11 @@ class tarjeta{
   protected $viajes;
   protected $tipo;    // 0 = Normal, 1 = Medio, 2 = Libre
 
-  function __construct($tipo){
+  function __construct{
 
     $this->saldo = 0.0;
     $this->plus = 0.0;
-    $this->tipo = $tipo
+    $this->tipo = 0;
   }
 
   public function carga($carga){
@@ -34,13 +34,28 @@ class tarjeta{
       $this->pagar_colectivo(Transporte $transporte, $fecha);
       return;
     }
-      else if($this->saldo >= 12.45){
-        $this->saldo -= 12.45;
-        $this->viajes[] = new viaje(false, $transporte->monto, $transporte->tipo, strtotime($fecha));
+      else if(strtotime($fecha) - end($this->viajes)->get_fecha() > 86400){
+        if($this->saldo >= 12.45){
+          $this->saldo -= 12.45;
+          $this->viajes[] = new viaje(false, 12.45, $transporte->tipo, strtotime($fecha));
+        }
+        else {
+          echo "Saldo Insuficiente";
+        }
+      }
+      else {
+        $this->viajes[] = new viaje(false, 0.0, $transporte->tipo, strtotime($fecha));
       }
     }
 
     public function pagar_colectivo(Transporte $transporte, $fecha){
+
+      if($this->tipo == 2){
+        $this->viajes = new viaje(false, 0.0, $transporte->tipo, strtotime($fecha));
+      }
+      else {
+
+
       $t = false;  //transbordo
 
       if( strtotime($fecha) - end($this->viajes)->get_fecha() < 3600 ){
@@ -78,13 +93,7 @@ class tarjeta{
         }
       }
     }
+  }
 }
 
-
-
-
-
-
-
-
- ?>
+?>
