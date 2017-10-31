@@ -5,11 +5,13 @@ class tarjeta{
   protected $saldo;
   protected $plus;    //precio de los boletos que adeuda
   protected $viajes;
+  protected $tipo;    // 0 = Normal, 1 = Medio, 2 = Libre
 
-  function __construct{
+  function __construct($tipo){
 
     $this->saldo = 0.0;
     $this->plus = 0.0;
+    $this->tipo = $tipo
   }
 
   public function carga($carga){
@@ -25,28 +27,56 @@ class tarjeta{
         }
   }
 
-  public function pagar_viaje(Transporte $transporte){
+  public function pagar_viaje(Transporte $transporte, $fecha){
 
     if($transporte->tipo == "Colectivo"){
 
-      $this->pagar_colectivo(Transporte $transporte);
+      $this->pagar_colectivo(Transporte $transporte, $fecha);
       return;
     }
       else if($this->saldo >= 12.45){
         $this->saldo -= 12.45;
-        $this->viajes[] = new viaje("Normal", $transporte->monto, $transporte->tipo);
+        $this->viajes[] = new viaje(false, $transporte->monto, $transporte->tipo, strtotime($fecha));
       }
     }
 
-    public function pagar_colectivo(Transporte $transporte){
+    public function pagar_colectivo(Transporte $transporte, $fecha){
+      $t = false;  //transbordo
 
-      if ($this->saldo >= 9.7) {
-        $this->saldo -= 9.7;
-        $this->viajes[] = new viaje("Normal", $transporte->monto, $transporte->linea);
+      if( strtotime($fecha) - end($this->viajes)->get_fecha() < 3600 ){
+        $t = true;
       }
-        else if($this->plus < 19.4){
+
+      else{
+        $t = false;
+      }
+
+      $monto = 9.7;
+
+      if($t){
+        $monto = $monto * 0.3;
+      }
+
+      if($this->tipo == 1){
+        $monto = $monto / 2.0;
+      }
+
+      if($this->saldo < $monto){
+        if($this->plus < 19.4) {
           $this->plus += 9.7;
+          $this->viajes[] = new viaje(false, 9.7, $transporte->tipo, strtotime($fecha))
         }
+      }
+
+      else {
+        $this->saldo -= $monto;
+        if($t){
+          $this->viajes[] = new viaje(true, $transporte->monto, $transporte->tipo, strtotime($fecha))
+        }
+        else {
+          $this->viajes[] = new viaje(false, $transporte->monto, $transporte->tipo, strtotime($fecha))
+        }
+      }
     }
 }
 

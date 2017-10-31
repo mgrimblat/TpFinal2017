@@ -2,15 +2,23 @@
 
   class viaje{
 
-    protected $tipo;      //plus, normal, pase libre, etc.
+    protected $transbordo;      // booleano
     protected $monto;
     protected $transporte;
+    protected $fecha;
 
-    function __construct($tipo, $monto, $transporte){
+    function __construct($transbordo, $monto, $transporte, $fecha){
 
-      $this->tipo = $tipo;
+      $this->transbordo = transbordo;
       $this->monto = $monto;
       $this->transporte = $transporte;
+      $this->fecha = $fecha;
+    }
+
+    function get_fecha{
+
+      return $this->fecha
+
     }
   }
 
