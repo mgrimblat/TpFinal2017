@@ -14,6 +14,7 @@ class tarjeta{
     $this->saldo = 0.0;
     $this->plus = 0.0;
     $this->tipo = 0;
+    $this->viajes = array();
   }
 
   public function carga($carga){
