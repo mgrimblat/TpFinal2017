@@ -1,5 +1,7 @@
 <?php
 
+namespace TpFinal;
+
 class transporte{
 
   protected $tipo;
