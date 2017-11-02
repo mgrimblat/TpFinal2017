@@ -31,7 +31,7 @@ class tarjeta{
 
   public function pagar_viaje(transporte $transporte, $fecha){
 
-    if($transporte->tipo == "Colectivo"){
+    if($transporte->get_tipo() == "Colectivo"){
 
       $this->pagar_colectivo($transporte, $fecha);
       return;
