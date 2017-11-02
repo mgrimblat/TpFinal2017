@@ -50,7 +50,7 @@ class tarjeta{
       }
     }
 
-    public function pagar_colectivo(transporte $transporte, $fecha){
+    protected function pagar_colectivo(transporte $transporte, $fecha){
 
       if($this->tipo == 2){
         $this->viajes = new viaje(false, 0.0, $transporte->tipo, strtotime($fecha));
@@ -59,15 +59,15 @@ class tarjeta{
 
 
       $t = false;  //transbordo
-
-      if( strtotime($fecha) - end($this->viajes)->get_fecha() < 3600 ){
-        $t = true;
-      }
-
-      else{
-        $t = false;
-      }
-
+      
+      if(end($this->viajes)->get_transporte() != $transporte){
+        if( strtotime($fecha) - end($this->viajes)->get_fecha() < 3600 ){
+         if(end($this->viajes)->get_transbordo() == false){
+          $t = true;
+         } 
+        }
+       }
+        
       $monto = 9.7;
 
       if($t){
