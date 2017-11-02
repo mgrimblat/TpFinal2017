@@ -1,14 +1,14 @@
 <?php
 
-namespace TpFinal;
+namespace dagos;
 
 use PHPUnit\Framework\TestCase;
 
-class EstacionTest extends TestCase {
+class TarjetaTest extends TestCase {
 
 
     public function testSaldoCero() {
-        $tarjeta = new Tarjeta;
+        $tarjeta = new tarjeta;
         $this->assertEquals($tarjeta->get_saldo(), 0.0);
     }
 }
