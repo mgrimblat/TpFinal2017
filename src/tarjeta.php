@@ -1,5 +1,7 @@
 <?php
 
+namespace TpFinal;
+
 class tarjeta{
 
   protected $saldo;
