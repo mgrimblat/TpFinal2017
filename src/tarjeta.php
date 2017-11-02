@@ -81,17 +81,17 @@ class tarjeta{
       if($this->saldo < $monto){
         if($this->plus < 19.4) {
           $this->plus += 9.7;
-          $this->viajes[] = new viaje(false, 9.7, $transporte->tipo, strtotime($fecha))
+          $this->viajes[] = new viaje(false, 9.7, $transporte->tipo, strtotime($fecha));
         }
       }
 
       else {
         $this->saldo -= $monto;
         if($t){
-          $this->viajes[] = new viaje(true, $transporte->monto, $transporte->tipo, strtotime($fecha))
+          $this->viajes[] = new viaje(true, $transporte->monto, $transporte->tipo, strtotime($fecha));
         }
         else {
-          $this->viajes[] = new viaje(false, $transporte->monto, $transporte->tipo, strtotime($fecha))
+          $this->viajes[] = new viaje(false, $transporte->monto, $transporte->tipo, strtotime($fecha));
         }
       }
     }
