@@ -25,7 +25,7 @@ class tarjeta{
         $this->saldo += 776.0 - $this->plus;
       }
         else{
-          $this->saldo = $carga - $this->plus
+          $this->saldo = $carga - $this->plus;
         }
   }
 
