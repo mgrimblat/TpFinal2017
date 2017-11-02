@@ -1,6 +1,6 @@
 <?php
 
-namespace dagos;
+namespace TpFinal;
 
 use PHPUnit\Framework\TestCase;
 
