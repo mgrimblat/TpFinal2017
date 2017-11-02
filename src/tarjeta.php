@@ -61,7 +61,7 @@ class tarjeta{
 
       $t = false;  //transbordo
       
-      if(end($this->viajes)->get_transporte() != $transporte){
+      if(end($this->viajes)->get_transporte()->linea != $transporte->linea){
         if( strtotime($fecha) - end($this->viajes)->get_fecha() < 3600 ){
          if(end($this->viajes)->get_transbordo() == false){
           $t = true;
