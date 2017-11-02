@@ -29,7 +29,7 @@ class TarjetaTest extends TestCase {
         $tarjeta->carga(50);
         $colectivo = new colectivo("K", "Naranja");
         $tarjeta->pagar_viaje($colectivo, "02/11/2017 12:13");
-        $this->assertEquals($tarjeta->get_saldo(), 50 - 9.7);
+        $this->assertEquals($tarjeta->get_saldo(), 40.3);
     }
     
     
