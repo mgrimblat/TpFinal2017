@@ -16,10 +16,22 @@ class viaje{
   $this->fecha = $fecha;
  }
 
- function get_fecha{
-
-  return $this->fecha
+ function get_fecha(){
+  return $this->fecha;
   }
+ 
+ function get_monto(){
+  return $this->monto;
+  }
+ 
+ function get_transporte(){
+  return $this->fecha;
+  }
+ 
+ function get_transbordo(){
+  return $this->transbordo;
+  }
+ 
 }
 
  ?>
