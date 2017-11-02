@@ -14,5 +14,13 @@ class colectivo extends transporte{
       $this->monto = 9.70;
       $this->tipo = "Colectivo";
     }
+    
+    public function get_linea(){
+        return $this->linea;
+    }
+    
+    public function get_empresa(){
+        return $this->empresa;
+    }
 }
 ?>
