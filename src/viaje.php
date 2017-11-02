@@ -25,7 +25,7 @@ class viaje{
   }
  
  function get_transporte(){
-  return $this->fecha;
+  return $this->transporte;
   }
  
  function get_transbordo(){
