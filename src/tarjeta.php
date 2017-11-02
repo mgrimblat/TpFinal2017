@@ -9,7 +9,7 @@ class tarjeta{
   protected $viajes;
   protected $tipo;    // 0 = Normal, 1 = Medio, 2 = Libre
 
-  function __construct{
+  function __construct(){
 
     $this->saldo = 0.0;
     $this->plus = 0.0;
