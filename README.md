@@ -1,7 +1,6 @@
-# dagos
+# TRABAJO FINAL 
 
-Carreras Juan
-Grimblat Martín
+Carreras Juan           Grimblat Martín
 
 [![Coverage Status](https://coveralls.io/repos/github/mgrimblat/TpFinal2017/badge.svg?branch=master)](https://coveralls.io/github/mgrimblat/TpFinal2017?branch=master)
 
