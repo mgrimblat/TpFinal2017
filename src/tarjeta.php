@@ -53,6 +53,8 @@ class tarjeta{
 
     protected function pagar_colectivo(transporte $transporte, $fecha){
 
+     if (!empty($this->viajes)){
+       
       if($this->tipo == 2){
         $this->viajes = new viaje(false, 0.0, $transporte->tipo, strtotime($fecha));
       }
@@ -96,8 +98,8 @@ class tarjeta{
         }
       }
     }
-  }
-  
+  }}
+     
    public function get_saldo(){
      return $this->saldo;
     }
