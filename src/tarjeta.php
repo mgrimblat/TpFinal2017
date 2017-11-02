@@ -34,7 +34,7 @@ class tarjeta{
 
     if($transporte->get_tipo() == "Colectivo"){
 
-      pagar_colectivo($transporte, $fecha);
+      $this->pagar_colectivo($transporte, $fecha);
       return;
     }
       else if(strtotime($fecha) - end($this->viajes)->get_fecha() > 86400){
