@@ -94,6 +94,10 @@ class tarjeta{
       }
     }
   }
+  
+   public function get_saldo(){
+     return $this->saldo;
+    }
 }
 
 ?>
