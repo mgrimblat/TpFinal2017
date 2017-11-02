@@ -1,5 +1,7 @@
 <?php
 
+namespace TpFinal;
+
 class colectivo extends transporte{
 
     protected $linea;
