@@ -56,7 +56,7 @@ class tarjeta{
       $monto = 9.7;
       $t = 0;   //transbordo
 
-        if(strtotime(fecha) - end($this->viajes)->get_fecha() < 86400.0){
+        if(strtotime($fecha) - end($this->viajes)->get_fecha() < 86400.0){
           if($transporte->get_linea() != end($this->viajes)->get_id()){
             $t = 1;
           }
