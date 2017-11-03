@@ -57,10 +57,11 @@ class tarjeta{
       $t = 0;   //transbordo
 
       if (!empty($this->viajes_en_colectivo)){
+                      $t = 1;
         if(end($this->viajes)->get_transbordo() == 0){
-          if(strtotime($fecha) - end($this->viajes)->get_fecha() < 86400.0){
+          if(strtotime($fecha) - end($this->viajes)->get_fecha() < 3600){
             if($transporte->get_linea() != end($this->viajes)->get_id()){
-              $t = 1;
+
             }
           }
         }
