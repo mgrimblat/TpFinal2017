@@ -54,23 +54,23 @@ class tarjeta{
     protected function pagar_colectivo(transporte $transporte, $fecha){
 
       $monto = 9.7;
-      $t = false;   //transbordo
+      $t = 0;   //transbordo
 
-      if (end($this->viajes)->get_transbordo() == false){
+      if (end($this->viajes)->get_transbordo() == 0){
         if(strtotime(fecha) - end($this->viajes)->get_fecha() < 86400.0){
           if($transporte->get_linea() != end($this->viajes)->get_id()){
-            $t = true;
+            $t = 1;
           }
         }
       }
 
-      if($t){
+      if($t == 1){
         $monto = $monto * 0.3;
       }
 
       if($this->saldo >= $monto){
         $this->saldo -=$monto;
-        $this->viajes[] = new viaje(false, $monto, "Colectivo", strtotime($fecha));
+        $this->viajes[] = new viaje(0, $monto, "Colectivo", strtotime($fecha));
       }
     }
 

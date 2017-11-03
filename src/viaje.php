@@ -3,7 +3,7 @@
 namespace TpFinal;
 class viaje{
 
- protected $transbordo;      // booleano
+ protected $transbordo;      // 0. falso 1. verdadero
  protected $monto;
  protected $transporte;
  protected $fecha;
