@@ -40,14 +40,14 @@ class tarjeta{
       else if(strtotime($fecha) - end($this->viajes)->get_fecha() > 86400){
         if($this->saldo >= 12.45){
           $this->saldo -= 12.45;
-          $this->viajes[] = new viaje(false, 12.45, $transporte->tipo, strtotime($fecha));
+          $this->viajes[] = new viaje(0, 12.45, $transporte->tipo, strtotime($fecha));
         }
         else {
           echo "Saldo Insuficiente";
         }
       }
       else {
-        $this->viajes[] = new viaje(false, 0.0, $transporte->tipo, strtotime($fecha));
+        $this->viajes[] = new viaje(0, 0.0, $transporte->tipo, strtotime($fecha));
       }
     }
 
