@@ -55,7 +55,7 @@ class tarjeta{
 
       if($this->saldo >= 9.7){
         $this->saldo -= 9.7;
-        $this->viajes[] = new viaje(false, 9.7, $transporte->tipo, strtotime($fecha));
+        $this->viajes[] = new viaje(false, 9.7, "Colectivo", strtotime($fecha));
       }
     }
 
