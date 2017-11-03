@@ -67,7 +67,7 @@ class tarjeta{
       }
 
       if($t == 1){
-        $monto = $monto * 0.3;
+        $monto = 2.91;
       }
 
       if($this->saldo >= $monto){
