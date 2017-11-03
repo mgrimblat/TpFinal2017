@@ -71,7 +71,7 @@ class tarjeta{
         }
        }
         
-      $monto = 9.7;
+      $monto = 9.70;
 
       if($t){
         $monto = $monto * 0.3;
@@ -83,8 +83,8 @@ class tarjeta{
 
       if($this->saldo < $monto){
         if($this->plus < 19.4) {
-          $this->plus += 9.7;
-          $this->viajes[] = new viaje(false, 9.7, $transporte->tipo, strtotime($fecha));
+          $this->plus += 9.70;
+          $this->viajes[] = new viaje(false, 9.70, $transporte->tipo, strtotime($fecha));
         }
       }
 
