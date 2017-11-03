@@ -50,6 +50,18 @@ class TarjetaTest extends TestCase {
       $this->assertEquals($tarjeta->get_saldo(), 50.0 - (9.70*2));
     }
 
+    public function test_transbordo(){
+      $tarjeta = new tarjeta;
+      $tarjeta->carga(50.0);
+      $colectivoK = new colectivo("K", "Naranja");
+      $colectivo144 = new colectivo("144", "Rosario Bus");
+      $tarjeta->pagar_viaje($colectivoK, "02/11/2017 12:34:20");
+      $tarjeta->pagar_viaje($colectivo144, "02/11/2017 13:01:07");
+      $this->assertEquals($tarjeta->get_saldo(), 50.0 - (9.70 + 9.7*0.3));
+    }
+
+
+
 }
 
 ?>
