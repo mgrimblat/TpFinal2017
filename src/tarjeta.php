@@ -75,7 +75,7 @@ class tarjeta{
       if($this->saldo >= 9.7){
         $this->saldo = $this->saldo - 9.7;
         $this->viajes[] = new viaje(0, 9.7, "Colectivo", $transporte->get_linea(), strtotime($fecha));
-
+      }
 
     }
 
