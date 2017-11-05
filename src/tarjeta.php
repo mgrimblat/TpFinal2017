@@ -57,7 +57,12 @@ class tarjeta{
       $t = 0;   //transbordo
 
       if (!empty($this->viajes_en_colectivo)){
-                      $t = 1;
+
+        if($this->saldo >= 2.91){
+          $this->saldo = $this->saldo - 2.91;
+          $this->viajes[] = new viaje(1, 2.91, "Colectivo", $transporte->get_linea(), strtotime($fecha));
+          return;
+        }
         if(end($this->viajes)->get_transbordo() == 0){
           if(strtotime($fecha) - end($this->viajes)->get_fecha() < 3600){
             if($transporte->get_linea() != end($this->viajes)->get_id()){
@@ -67,14 +72,11 @@ class tarjeta{
         }
       }
 
-      if($t == 1){
-        $monto = 2.91;
-      }
+      if($this->saldo >= 9.7){
+        $this->saldo = $this->saldo - 9.7;
+        $this->viajes[] = new viaje(0, 9.7, "Colectivo", $transporte->get_linea(), strtotime($fecha));
 
-      if($this->saldo >= $monto){
-        $this->saldo = $this->saldo - $monto;
-        $this->viajes[] = new viaje(0, $monto, "Colectivo", $transporte->get_linea(), strtotime($fecha));
-      }
+
     }
 
    public function get_saldo(){
