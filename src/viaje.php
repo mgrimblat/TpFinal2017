@@ -26,14 +26,6 @@ class viaje{
   return $this->fecha;
   }
 
- function get_monto(){
-  return $this->monto;
-  }
-
- function get_transporte(){
-  return $this->transporte;
-  }
-
  function get_transbordo(){
   return $this->transbordo;
   }
