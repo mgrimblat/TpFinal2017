@@ -33,19 +33,17 @@ class tarjeta{
   public function pagar_viaje(transporte $transporte, $fecha){
 
     if($transporte->get_tipo() == "Colectivo"){
-
       $this->pagar_colectivo($transporte, $fecha);
       return;
     }
+
       else if(strtotime($fecha) - end($this->viajes)->get_fecha() > 86400){
         if($this->saldo >= 12.45){
           $this->saldo -= 12.45;
           $this->viajes[] = new viaje(0, 12.45, $transporte->tipo, 0, strtotime($fecha));
         }
-        else {
-          echo "Saldo Insuficiente";
-        }
       }
+
       else {
         $this->viajes[] = new viaje(0, 0.0, $transporte->tipo, 0, strtotime($fecha));
       }

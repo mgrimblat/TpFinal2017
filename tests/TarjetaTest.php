@@ -30,7 +30,6 @@ class TarjetaTest extends TestCase {
       $bici = new bicicleta();
       $tarjeta->pagar_viaje($bici, "03/11/2017 08:54");
       $this->assertEquals($tarjeta->get_saldo(), 50 - 12.45);
-
     }
 
     public function pagar_2bici(){
@@ -40,11 +39,10 @@ class TarjetaTest extends TestCase {
       $tarjeta->pagar_viaje($bici, "03/11/2017 08:54");
       $tarjeta->pagar_viaje($bici, "03/11/2017 08:57");
       $this->assertEquals($tarjeta->get_saldo(), 50 - (12.45 * 2));
-
     }
 
     public function test_Pagar1Viaje(){
-      $tarjeta = new tarjeta;
+      $tarjeta = new tarjeta0;
       $tarjeta->carga(50.0);
       $colectivo = new colectivo("K", "Naranja");
       $tarjeta->pagar_viaje($colectivo, "02/11/2017 12:34:20");
@@ -76,11 +74,7 @@ class TarjetaTest extends TestCase {
       $colectivoK = new colectivo("K", "Naranja");
       $tarjeta->pagar_viaje($colectivoK, "02/11/2017 12:34:20");
       $this->assertEquals($tarjeta->get_saldo(), 50.0 - (9.70 / 2));
-
     }
-
-
-
 }
 
 ?>
