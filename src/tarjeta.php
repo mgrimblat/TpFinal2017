@@ -62,7 +62,7 @@ class tarjeta{
       }
 
       if($this->tipo == 1){
-        $descuento = 0.5
+        $descuento = 0.5;
       }
 
       if (!empty($this->viajes)){
