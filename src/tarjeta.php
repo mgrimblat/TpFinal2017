@@ -38,17 +38,18 @@ class tarjeta{
     }
 
     if (!empty($this->viajes)){
-      if(strtotime($fecha) - end($this->viajes)->get_fecha() > 86400){
+      if(strtotime($fecha) - end($this->viajes)->get_fecha() < 86400){
+        $this->viajes[] = new viaje(0, 0.0, 0, 0, strtotime($fecha));
+      }
+
+      else {
         if($this->saldo >= 12.45){
           $this->saldo -= 12.45;
           $this->viajes[] = new viaje(0, 12.45, 0, 0, strtotime($fecha));
         }
       }
-
-      else {
-        $this->viajes[] = new viaje(0, 0.0, 0, 0, strtotime($fecha));
-      }
     }
+
     else {
       if($this->saldo >= 12.45){
         $this->saldo -= 12.45;
