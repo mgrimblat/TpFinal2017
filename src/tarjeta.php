@@ -37,6 +37,7 @@ class tarjeta{
       return;
     }
 
+    if($transporte->get_tipo() == "Bicicleta"){
       else if(strtotime($fecha) - end($this->viajes)->get_fecha() > 86400){
         if($this->saldo >= 12.45){
           $this->saldo -= 12.45;
@@ -48,6 +49,7 @@ class tarjeta{
         $this->viajes[] = new viaje(0, 0.0, $transporte->tipo, 0, strtotime($fecha));
       }
     }
+  }
 
     protected function pagar_colectivo(transporte $transporte, $fecha){
 
