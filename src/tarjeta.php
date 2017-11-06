@@ -58,14 +58,16 @@ class tarjeta{
 
 
 
-        if($this->saldo >= 2.91){
-          $this->saldo = $this->saldo - 2.91;
-          $this->viajes[] = new viaje(1, 2.91, "Colectivo", $transporte->get_linea(), strtotime($fecha));
-          return;
-        }
+
         if(end($this->viajes)->get_transbordo() == 0){
           if(strtotime($fecha) - end($this->viajes)->get_fecha() < 3600){
             if($transporte->get_linea() != end($this->viajes)->get_id()){
+
+              if($this->saldo >= 2.91){
+                $this->saldo = $this->saldo - 2.91;
+                $this->viajes[] = new viaje(1, 2.91, "Colectivo", $transporte->get_linea(), strtotime($fecha));
+                return;
+              }
 
             }
           }
@@ -78,7 +80,7 @@ class tarjeta{
       }
 
     }
-    
+
    public function get_saldo(){
      return $this->saldo;
     }
