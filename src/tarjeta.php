@@ -53,17 +53,26 @@ class tarjeta{
 
     protected function pagar_colectivo(transporte $transporte, $fecha){
 
-      $monto = 9.7;
-      $t = 0;   //transbordo
+      $descuento = 1.0;
+
+      if($this->tipo == 2){
+
+        $this->viajes[] = new viaje(0, 0.0, "Colectivo", $transporte->get_linea(), strtotime($fecha));
+        return;
+      }
+
+      if($this->tipo == 1){
+        $descuento = 0.5
+      }
 
       if (!empty($this->viajes)){
         if(end($this->viajes)->get_transbordo() == 0){
           if(strtotime($fecha) - end($this->viajes)->get_fecha() < 3600){
             if($transporte->get_linea() != end($this->viajes)->get_id()){
 
-              if($this->saldo >= 2.91){
-                $this->saldo = $this->saldo - 2.91;
-                $this->viajes[] = new viaje(1, 2.91, "Colectivo", $transporte->get_linea(), strtotime($fecha));
+              if($this->saldo >= 2.91 * $descuento){
+                $this->saldo = $this->saldo - 2.91 * $descuento;
+                $this->viajes[] = new viaje(1, 2.91 * $descuento, "Colectivo", $transporte->get_linea(), strtotime($fecha));
                 return;
               }
             }
@@ -72,9 +81,9 @@ class tarjeta{
       }
 
 
-      if($this->saldo >= 9.7){
-        $this->saldo = $this->saldo - 9.7;
-        $this->viajes[] = new viaje(0, 9.7, "Colectivo", $transporte->get_linea(), strtotime($fecha));
+      if($this->saldo >= 9.7 * $descuento){
+        $this->saldo = $this->saldo - 9.7 * $descuento;
+        $this->viajes[] = new viaje(0, 9.7 * $descuento, "Colectivo", $transporte->get_linea(), strtotime($fecha));
       }
 
     }

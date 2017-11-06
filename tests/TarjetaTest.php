@@ -70,6 +70,15 @@ class TarjetaTest extends TestCase {
       $this->assertEquals($tarjeta->get_saldo(), 50.0 - (9.70 + 2.91));
     }
 
+    public function test_medio(){
+      $tarjeta = new medio;
+      $tarjeta->carga(50.0);
+      $colectivoK = new colectivo("K", "Naranja");
+      $tarjeta->pagar_viaje($colectivoK, "02/11/2017 12:34:20");
+      $this->assertEquals($tarjeta->get_saldo(), 50.0 - (9.70 / 2));
+
+    }
+
 
 
 }
