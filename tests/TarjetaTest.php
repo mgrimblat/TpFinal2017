@@ -79,6 +79,7 @@ class TarjetaTest extends TestCase {
     public function test_medioTransbordo(){
       $tarjeta = new medio;
       $tarjeta->carga(50.0);
+      $colectivoK = new colectivo("K", "Naranja");
       $colectivo144 = new colectivo("144", "Rosario Bus");
       $tarjeta->pagar_viaje($colectivoK, "02/11/2017 12:34:20");
       $tarjeta->pagar_viaje($colectivo144, "02/11/2017 13:01:07");
