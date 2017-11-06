@@ -6,7 +6,6 @@ use PHPUnit\Framework\TestCase;
 
 class TarjetaTest extends TestCase {
 
-
     public function test_SaldoCero() {
       $tarjeta = new tarjeta;
       $this->assertEquals($tarjeta->get_saldo(), 0.0);
@@ -69,7 +68,7 @@ class TarjetaTest extends TestCase {
       $this->assertEquals($tarjeta->get_saldo(), 50.0 - ((9.70 + 2.91)/2));
     }
 
-    public function pagar_bici(){
+    public function test_pagar_bici(){
       $tarjeta = new tarjeta;
       $tarjeta->carga(50.0);
       $bici = new bicicleta;
@@ -77,7 +76,7 @@ class TarjetaTest extends TestCase {
       $this->assertEquals($tarjeta->get_saldo(), 50 - 12.45);
     }
 
-    public function pagar_2bici(){
+    public function test_pagar_2bici(){
       $tarjeta = new tarjeta;
       $tarjeta->carga(50.0);
       $bici = new bicicleta;
