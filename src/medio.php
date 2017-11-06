@@ -4,7 +4,7 @@ namespace TpFinal;
 
 class medio extends tarjeta{
 
-  function __construct{
+  function __construct(){
     $this->tipo = 1;
   }
 }
