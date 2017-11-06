@@ -11,8 +11,5 @@ class transporte{
     return $this->tipo;
   }
 
-  public function get_monto(){
-    return $this->monto;
-  }
 }
 ?>
