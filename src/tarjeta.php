@@ -6,7 +6,8 @@ class tarjeta{
 
   protected $saldo;
   protected $plus;    //precio de los boletos que adeuda
-  protected $viajes;
+  protected $viajes_colectivo;
+  protected $viajes_bicicleta;
   protected $tipo;    // 0 = Normal, 1 = Medio, 2 = Libre
 
   function __construct(){
@@ -14,7 +15,8 @@ class tarjeta{
     $this->saldo = 0.0;
     $this->plus = 0.0;
     $this->tipo = 0;
-    $this->viajes = array();
+    $this->viajes_colectivo = array();
+    $this->viajes_bicicleta = array();
   }
 
   public function carga($carga){
@@ -37,15 +39,15 @@ class tarjeta{
       return;
     }
 
-    if (!empty($this->viajes)){
-      if(strtotime($fecha) - end($this->viajes)->get_fecha() < 86400){
-        $this->viajes[] = new viaje(0, 0.0, 0, 0, strtotime($fecha));
+    if (!empty($this->viajes_bicicleta)){
+      if(strtotime($fecha) - end($this->viajes_bicicleta)->get_fecha() < 86400){
+        $this->viajes_bicicleta[] = new viaje(0, 0.0, 0, 0, strtotime($fecha));
       }
 
       else {
         if($this->saldo >= 12.45){
           $this->saldo -= 12.45;
-          $this->viajes[] = new viaje(0, 12.45, 0, 0, strtotime($fecha));
+          $this->viajes_bicicleta[] = new viaje(0, 12.45, 0, 0, strtotime($fecha));
         }
       }
     }
@@ -53,7 +55,7 @@ class tarjeta{
     else {
       if($this->saldo >= 12.45){
         $this->saldo -= 12.45;
-        $this->viajes[] = new viaje(0, 12.45, 0, 0, strtotime($fecha));
+        $this->viajes_bicicleta[] = new viaje(0, 12.45, 0, 0, strtotime($fecha));
       }
     }
   }
@@ -66,14 +68,14 @@ class tarjeta{
         $descuento = 0.5;
       }
 
-      if (!empty($this->viajes)){
-        if(end($this->viajes)->get_transbordo() == 0){
-          if(strtotime($fecha) - end($this->viajes)->get_fecha() < 3600){
-            if($transporte->get_linea() != end($this->viajes)->get_id()){
+      if (!empty($this->viajes_colectivo)){
+        if(end($this->viajes_colectivo)->get_transbordo() == 0){
+          if(strtotime($fecha) - end($this->viajes_colectivo)->get_fecha() < 3600){
+            if($transporte->get_linea() != end($this->viajes_colectivo)->get_id()){
 
               if($this->saldo >= 2.91 * $descuento){
                 $this->saldo = $this->saldo - 2.91 * $descuento;
-                $this->viajes[] = new viaje(1, 2.91 * $descuento, "Colectivo", $transporte->get_linea(), strtotime($fecha));
+                $this->viajes_colectivo[] = new viaje(1, 2.91 * $descuento, "Colectivo", $transporte->get_linea(), strtotime($fecha));
                 return;
               }
             }
@@ -84,7 +86,7 @@ class tarjeta{
 
       if($this->saldo >= 9.7 * $descuento){
         $this->saldo = $this->saldo - 9.7 * $descuento;
-        $this->viajes[] = new viaje(0, 9.7 * $descuento, "Colectivo", $transporte->get_linea(), strtotime($fecha));
+        $this->viajes_colectivo[] = new viaje(0, 9.7 * $descuento, "Colectivo", $transporte->get_linea(), strtotime($fecha));
       }
 
     }
