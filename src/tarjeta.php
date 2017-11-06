@@ -40,18 +40,25 @@ class tarjeta{
     }
 
     if (!empty($this->viajes_bicicleta)){
-      $this->viajes_bicicleta[] = new viaje(0, 0.0, 0, 0, strtotime($fecha));
       if(strtotime($fecha) - end($this->viajes_bicicleta)->get_fecha() < 86400){
-
+        $this->viajes_bicicleta[] = new viaje(0, 0.0, 0, 0, strtotime($fecha));
+        return;
       }
 
-
+      else {
+        if($this->saldo >= 12.45){
+          $this->saldo -= 12.45;
+          $this->viajes_bicicleta[] = new viaje(0, 12.45, 0, 0, strtotime($fecha));
+          return;
+        }
+      }
     }
 
     else {
       if($this->saldo >= 12.45){
         $this->saldo -= 12.45;
         $this->viajes_bicicleta[] = new viaje(0, 12.45, 0, 0, strtotime($fecha));
+        return;
       }
     }
   }
