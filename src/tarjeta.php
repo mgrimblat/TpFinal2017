@@ -38,7 +38,7 @@ class tarjeta{
     }
 
     if($transporte->get_tipo() == "Bicicleta"){
-      else if(strtotime($fecha) - end($this->viajes)->get_fecha() > 86400){
+      if(strtotime($fecha) - end($this->viajes)->get_fecha() > 86400){
         if($this->saldo >= 12.45){
           $this->saldo -= 12.45;
           $this->viajes[] = new viaje(0, 12.45, $transporte->tipo, 0, strtotime($fecha));
