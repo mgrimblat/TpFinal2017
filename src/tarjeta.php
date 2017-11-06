@@ -56,9 +56,7 @@ class tarjeta{
       $monto = 9.7;
       $t = 0;   //transbordo
 
-
-
-
+      if (!empty($this->viajes)){
         if(end($this->viajes)->get_transbordo() == 0){
           if(strtotime($fecha) - end($this->viajes)->get_fecha() < 3600){
             if($transporte->get_linea() != end($this->viajes)->get_id()){
@@ -68,10 +66,10 @@ class tarjeta{
                 $this->viajes[] = new viaje(1, 2.91, "Colectivo", $transporte->get_linea(), strtotime($fecha));
                 return;
               }
-
             }
           }
         }
+      }
 
 
       if($this->saldo >= 9.7){
