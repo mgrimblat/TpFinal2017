@@ -55,12 +55,6 @@ class tarjeta{
 
       $descuento = 1.0;
 
-      if($this->tipo == 2){
-
-        $this->viajes[] = new viaje(0, 0.0, "Colectivo", $transporte->get_linea(), strtotime($fecha));
-        return;
-      }
-
       if($this->tipo == 1){
         $descuento = 0.5;
       }
