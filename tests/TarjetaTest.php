@@ -82,7 +82,7 @@ class TarjetaTest extends TestCase {
       $bici = new bicicleta;
       $tarjeta->pagar_viaje($bici, "03/11/2017 08:54");
       $tarjeta->pagar_viaje($bici, "03/11/2017 08:57");
-      $this->assertEquals($tarjeta->get_saldo(), 50 - (12.45 * 2));
+      $this->assertEquals($tarjeta->get_saldo(), 50 - 12.45);
     }
 }
 
